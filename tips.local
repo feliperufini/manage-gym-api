@@ -1,0 +1,42 @@
+# REGRAS DO BANCO
+  ° Tabelas sempre no plural
+  ° Coluans sempre no singular
+  ° Utilizar snake_case nas colunas
+  ° Nome do módulo matriz caso o sub-módulo seja utilizado em mais lugares.
+  Ex: (invoice_payments || payments) => Se no sistema não existir mais nada relacionado a pagamentos, deve ser utilizado o payments que é menos específico, mas a própria relação vai facilitar o compreendimento depois.
+
+
+# MIGRATE/UPDATE DO BANCO DE DADOS
+  npx prisma migrate dev => Inserir o nome da ação que aquele arquivo de migration faz.
+
+# VISUALIZAÇÃO DO BANCO DE DADOS
+  npx prisma studio => Abre uma janela no navegador semelhante ao phpMyAdmin para visualizar tabelas,
+  registros e inserir registros no banco de dados. http://localhost:5555
+
+# PADRÃO DE NOMEAÇÃO DE ROTAS
+  ° GET /user-configs - Retorna uma lista de configurações.
+  ° GET /user-configs?sort=name&order=asc - Retorna uma lista de configurações com filtro.
+  ° POST /user-configs - Cria uma nova configuração.
+  ° GET /user-configs/{config} - Retorna uma configuração específica.
+  ° PUT /user-configs/{config} - Atualiza uma configuração específica.
+  ° DELETE /user-configs/{config} - Exclui uma configuração específica.
+  ° GET /user-configs/{config}/comments - Retorna comentários de uma configuração específica.
+  ° POST /user-configs/{config}/comments - Adiciona um novo comentário a uma configuração específica.
+
+  OBS: Rotas no plural (igual ao banco), em lowercase, separadas por hífen
+
+# EXEMPLOS DE RETORNO DE API
+  Github: https://api.github.com/users/feliperufini
+  Github: https://api.github.com/repos/feliperufini/felskys-manager-api
+
+# CÓDIGO HTTP DAS ROTAS
+  ° 200 -> Sucesso genérico
+  ° 201 -> Sucesso ao criar ou editar um registro
+  ° 400 -> Erro genérico
+  ° 404 -> Erro: Item não encontrado na tabela
+  ° 409 -> Erro: Dados já existentes (para colunas unique)
+  ° 422 -> Erro: Inputs informados de forma/formatação errada (validação de input)
+
+# CÓDIGO DE ERROS DO PRISMA
+  - P2000, P2001, P2000...
+  https://www.prisma.io/docs/orm/reference/error-reference#error-codes
