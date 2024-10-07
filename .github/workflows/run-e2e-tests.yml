@@ -6,7 +6,6 @@ jobs:
   run-unit-tests:
     name: Run E2E Tests
     runs-on: ubuntu-latest
-
     services:
       postgres:
         image: bitnami/postgresql
@@ -16,7 +15,6 @@ jobs:
           - POSTGRESQL_USERNAME=docker
           - POSTGRESQL_PASSWORD=docker
           - POSTGRESQL_DATABASE=manage-gym
-
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
