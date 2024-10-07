@@ -12,8 +12,6 @@ jobs:
         env:
           MYSQL_DATABASE: testdb
           MYSQL_ROOT_PASSWORD: testrootpass
-          DATABASE_CLIENT: mysql
-          DATABASE_URL: "mysql://root:@localhost:3306/manage-gym-api"
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -28,4 +26,5 @@ jobs:
       - run: npm run test:e2e
         env:
           JWT_SECRET: testing
-          DATABASE_URL: "postgres://docker:docker@localhost:5432/manage-gym?schema=public"
+          DATABASE_CLIENT: mysql
+          DATABASE_URL: "mysql://root:@localhost:3306/manage-gym-api"
